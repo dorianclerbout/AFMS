@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+     <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">Contactez-nous</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Accueil</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Contact</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Contact</h5>
+                <h1>Contactez-nous pour toute demande</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-secondary rounded p-5">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="control-group">
+                                <input type="text" class="form-control border-0 p-4" id="name" placeholder="Votre nom" required="required" data-validation-required-message="Veuillez entrer votre nom" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="email" class="form-control border-0 p-4" id="email" placeholder="Votre adresse e-mail" required="required" data-validation-required-message="Veuillez entrer votre adresse e-mail" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control border-0 p-4" id="subject" placeholder="Sujet" required="required" data-validation-required-message="Veuillez entrer un sujet" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea class="form-control border-0 py-3 px-4" rows="5" id="message" placeholder="Message" required="required" data-validation-required-message="Veuillez entrer votre message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Envoyer le message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="card contact-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Coordonnées de contact</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-map-marker-alt"></i> Adresse : 5 rue de Rome, 93110 Rosny-sous-Bois</li>
+                                <li><i class="fa fa-envelope"></i> Email : contact@afms-france.fr</li>
+                                <li><i class="fa fa-phone"></i> Téléphone : 01 41 50 57 49 / 06 62 18 27 69</li>
+                                <li><i class="fa fa-bus"></i> Transports : A86 ou A3 Sortie Rosny-sous-Bois / Bus : Ligne 102 ou 118 Arrêt Nanteuil ZI Jules FERRY / RER : Ligne 4 Rosny Bois Perrier</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Localisation</h5>
+                            <div id="map" style="height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Script de l'API Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            var location = { lat: 48.8697, lng: 2.4705 }; // Remplacez par les coordonnées réelles
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+     <style>
+        .contact-card {
+            background-color: #f8f9fa;
+            border: none;
+        }
+
+        .contact-card .card-body {
+            padding: 20px;
+        }
+
+        .contact-card .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .contact-card ul li {
+            list-style: none;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .contact-card ul li i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+    </style>
+{% endblock %}
