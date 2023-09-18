@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Site/base.html.twig' %}
 
 {% block title %}{% endblock %}
 
@@ -29,27 +29,32 @@
                 <div class="col-lg-8">
                     <div class="contact-form bg-secondary rounded p-5">
                         <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                     
+                         {{ form_start(form, {'attr': {'id': 'contactForm', 'data-parsley-validate': true}}) }}
                             <div class="control-group">
-                                <input type="text" class="form-control border-0 p-4" id="name" placeholder="Votre nom" required="required" data-validation-required-message="Veuillez entrer votre nom" />
+                                  {{ form_row(form.name) }}
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <input type="email" class="form-control border-0 p-4" id="email" placeholder="Votre adresse e-mail" required="required" data-validation-required-message="Veuillez entrer votre adresse e-mail" />
+                                  {{ form_row(form.lastname) }}
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control border-0 p-4" id="subject" placeholder="Sujet" required="required" data-validation-required-message="Veuillez entrer un sujet" />
+                         {{ form_row(form.email) }}
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <textarea class="form-control border-0 py-3 px-4" rows="5" id="message" placeholder="Message" required="required" data-validation-required-message="Veuillez entrer votre message"></textarea>
-                                <p class="help-block text-danger"></p>
+                                 {{ form_row(form.phone) }}
+                            </div>
+                             <div class="control-group">
+                                  {{  form_widget(form._token) }}
                             </div>
                             <div class="text-center">
+                         <div class="control-group">
                                 <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Envoyer le message</button>
                             </div>
-                        </form>
+                            </div>
+                         {{ form_end(form) }}
                     </div>
                 </div>
                 <div class="col-lg-4 mt-4 mt-lg-0">
@@ -59,8 +64,10 @@
                             <ul class="list-unstyled">
                                 <li><i class="fa fa-map-marker-alt"></i> Adresse : 5 rue de Rome, 93110 Rosny-sous-Bois</li>
                                 <li><i class="fa fa-envelope"></i> Email : contact@afms-france.fr</li>
-                                <li><i class="fa fa-phone"></i> Téléphone : 01 41 50 57 49 / 06 62 18 27 69</li>
-                                <li><i class="fa fa-bus"></i> Transports : A86 ou A3 Sortie Rosny-sous-Bois / Bus : Ligne 102 ou 118 Arrêt Nanteuil ZI Jules FERRY / RER : Ligne 4 Rosny Bois Perrier</li>
+                                <li><i class="fa fa-phone"></i> Téléphone : 01 41 50 57 49 </li>
+                                <li><i class="fa fa-car"></i> Transports : A86 ou A3 Sortie Rosny-sous-Bois </li>
+                              <li><i class="fa fa-bus"></i> Bus : Ligne 102 ou 118 Arrêt Nanteuil ZI Jules FERRY </li>
+                               <li><i class="fa fa-train"></i> RER : Ligne 4 Rosny Bois Perrier</li>
                             </ul>
                         </div>
                     </div>

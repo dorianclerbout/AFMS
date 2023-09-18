@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Site/base.html.twig' %}
 
 {% block title %}{% endblock %}
 
@@ -78,158 +78,195 @@
     <!-- About End -->
 
 
-   <!-- Category Start -->
 <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-5">
             <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Nos formations aux métiers de la sécurité</h5>
             <h1>Trouver votre formation dès maintenant</h1>
         </div>
-    <div class="row">
-           
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                    <img class="img-fluid" src="../assets/img/afms/AGENT SSIAP 1-2-3 (2).JPG" alt="">
-                    <a class="cat-overlay text-white text-decoration-none" href="">
-                        <center><h4 class="text-white font-weight-medium">Habilitations Electrique</h4></center>
-                    </a>
+        
+        <div class="row-1 d-flex justify-content-center">
+            <div id="category-carousel" class="carousel slide d-sm-none" data-interval="55000">
+
+                <div class="carousel-inner">
+                    {% for categorie in categories %}
+                        <div class="carousel-item {% if loop.first %}active{% endif %}">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 mb-4 mx-auto">
+                                <div class="cat-item position-relative overflow-hidden rounded mb-2 text-center">
+                                    <img class="img-fluid" src="{{ asset('assets/img/' ~ categorie ~ '.png') }}" alt="">
+                                    <a class="cat-overlay text-white text-decoration-none" href="#" data-category="{{ categorie }}">
+                                        <h4 class="text-white font-weight-medium">{{ categorie }}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
+                <a class="carousel-control-prev" href="#category-carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#category-carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                    <img class="img-fluid" src="../assets/img/afms/AGENT SSIAP 1-2-3 (2).JPG" alt="">
-                    <a class="cat-overlay text-white text-decoration-none" href="">
-                        <h4 class="text-white font-weight-medium">Sécurité Incendie</h4>
-                    </a>
+            {% for categorie in categories %}
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 mb-4 mx-auto d-none d-sm-block">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2 text-center">
+                        <img class="img-fluid" src="{{ asset('assets/img/' ~ categorie ~ '.png') }}" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="#" data-category="{{ categorie }}">
+                            <h4 class="text-white font-weight-medium">{{ categorie }}</h4>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                    <img class="img-fluid" src="../assets/img/afms/AGENT SSIAP 1-2-3 (2).JPG" alt="">
-                    <a class="cat-overlay text-white text-decoration-none" href="">
-                        <h4 class="text-white font-weight-medium">Sécurité Prévention</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                    <img class="img-fluid" src="../assets/img/afms/AGENT SSIAP 1-2-3 (2).JPG" alt="">
-                    <a class="cat-overlay text-white text-decoration-none" href="">
-                        <h4 class="text-white font-weight-medium">Secourisme</h4>
-                    </a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
 
+{% set categorieImages = {
+    'Agent de surveillance': 'assets/img/Agent de surveillance',
+    'SSIAP': 'assets/img/SSIAP.png',
+    'Secourisme': 'assets/img/Secourisme.png',
+    'Habilitations électriques': 'assets/img/Habilitations électriques',
+     'Incendie': 'assets/img/Incendie.png'
+} %}
 
 
-<script>
-
-  var categoryLinks = document.querySelectorAll('.cat-overlay');
-
- 
-  categoryLinks.forEach(function(link) {
-   
-    link.addEventListener('click', function(event) {
-      event.preventDefault(); 
-      var category = this.querySelector('h4').textContent;
-
-      var courses = document.querySelectorAll('.rounded');
-
-      courses.forEach(function(course) {
-    
-        var courseCategory = course.getAttribute('data-category');
-        if (courseCategory === category) {
-         
-          if (course.style.display === 'none') {
-            course.style.display = 'block';
-          } else {
-            course.style.display = 'none'; 
-          }
-        }
-      });
-    });
-  });
-</script>
-
- 
-    <!-- Courses Start -->
-    <div class="container-fluid ">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Nos formations disponible :</h5>
-                
+<!-- Courses Start -->
+<div class="container-fluid">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Nos formations disponibles :</h5>
+        </div>
+        <div class="row d-none d-sm-flex"> <!-- Cacher sur mobile -->
+            {% for formation in formations %}
+                <div class="col-lg-4 col-md-6 mb-4 formation-category" data-category="{{ formation.categorie }}">
+                    <div class="rounded overflow-hidden mb-2">
+                        <img class="img-fluid rounded" src="{{ asset('uploads/' ~ formation.imageFileName) }}" alt="{{ formation.name }}">
+                         <div class="bg-secondary p-4">
+             <a class="h5" href="">{{ formation.name }}</a>
+                <div class="d-flex justify-content-between mb-3">
+                    <small class="m-0">
+                        {% if formation.categorie == 'Agent de surveillance' %}
+                            <i class="fa-solid fa-shield-halved text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'SSIAP' %}
+                            <i class="fa-solid fa-house-fire text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'Secourismes' %}
+                            <i class="fa-solid fa-suitcase-medical text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'Habilitations électriques' %}
+                            <i class="fa-solid fa-bolt text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'Incendie' %}
+                            <i class="fa fa-incendie-icon-class-here text-primary mr-2" aria-hidden="true"></i>
+                        {% endif %}
+                        {{ formation.categorie }}
+                    </small>
+                    <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>{{ formation.time }} Heures</small>
+                </div>
+                <div class="d-flex justify-content-between">
+                        <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>{{ formation.people }} Participants</small>
+                        <small class="m-0"><i class="fa fa-euro text-primary mr-2"></i> €</small>
+                    </div>
+               
+                <div class="border-top mt-4 pt-4">
+                    
+                    <center>  <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Obtenir un Devis</a></center>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                     <div class="rounded overflow-hidden mb-2" data-category="Sécurité Incendie">
-                        <img class="img-fluid" src="../assets/img/afms/AGENT SSIAP 1-2-3 (2).JPG" alt="">
-                        <div class="bg-secondary p-4">
-                            <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-fire-extinguisher text-primary mr-2" aria-hidden="true"></i>
-Sécurité Incendie</small>
-                                <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>67h</small>
-                            </div>
-                            <a class="h5" href="">Agent de Sécurité Incendie SSIAP 1</a>
-                            <div class="border-top mt-4 pt-4">
-                                <div class="d-flex justify-content-between">
-                                  <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>14 étudiants</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Carrousel pour mobile -->
+        <div id="formationCarousel" class="carousel slide d-sm-none" data-ride="carousel" data-wrap="true" data-interval="false">
+
+            <div class="carousel-inner">
+                {% for formation in formations %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <div class="col-lg-4 col-md-6 mb-4 formation-category" data-category="{{ formation.categorie }}">
+                            <div class="rounded overflow-hidden mb-2">
+                                <img class="img-fluid rounded" src="{{ asset('uploads/' ~ formation.imageFileName) }}" alt="{{ formation.name }}">
+                                <div class="bg-secondary p-4">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <small class="m-0">
+                                            {% if formation.categorie == 'Agent de surveillance' %}
+                                                <i class="fa-solid fa-shield-halved text-primary mr-2"></i>
+                                            {% elseif formation.categorie == 'SSIAP' %}
+                                                <i class="fa-solid fa-house-fire text-primary mr-2"></i>
+                                            {% elseif formation.categorie == 'Secourisme' %}
+                                                <i class="fa-solid fa-suitcase-medical text-primary mr-2"></i>
+                                            {% elseif formation.categorie == 'Habilitations électriques' %}
+                                                <i class="fa-solid fa-bolt text-primary mr-2"></i>
+                                            {% elseif formation.categorie == 'Incendie' %}
+                                                <i class="fa fa-incendie-icon-class-here text-primary mr-2" aria-hidden="true"></i>
+                                            {% endif %}
+                                            {{ formation.categorie }}
+                                        </small>
+                                        <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>{{ formation.time }} Heures</small>
+                                        <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>{{ formation.people }} Participants</small>
+                                        <small class="m-0"><i class="fa fa-euro text-primary mr-2"></i> € </small>
+                                    </div>
+                                    <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Obtenir un devis</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-               
+                {% endfor %}
             </div>
+            <a class="carousel-control-prev" href="#formationCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#formationCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
-    <!-- Courses End -->
-
+</div>
+<!-- Courses End -->
 
 
   
-    <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+   
+<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-5 mb-lg-0">
                     <div class="mb-4">
-                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Notre centre de formation</h5>
-                        <h1 class="text-white">30% Off For New Students</h1>
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Besoin de Renseignements</h5>
+                        <h1 class="text-white">Contactez-nous</h1>
                     </div>
-                    <p class="text-white">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
-                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                        dolor</p>
+                    <p class="text-white">Si vous avez des questions concernant le financement de votre formation, n'hésitez pas à nous contacter.<p> 
+                    <p class="text-white"> Nous sommes là pour vous aider à trouver les meilleures solutions.</p>
+                    
                     <ul class="list-inline text-white m-0">
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
+                        <li class="py-2"><i class="fa fa-phone text-primary mr-3"></i>Appelez-nous au : +123 456 789</li>
+                        <li class="py-2"><i class="fa fa-clock text-primary mr-3"></i>Horaires d'ouverture : Lun - Ven : 9h00 - 18h00</li>
+                      
                     </ul>
                 </div>
                 <div class="col-lg-5">
                     <div class="card border-0">
                         <div class="card-header bg-light text-center p-4">
-                            <h1 class="m-0">Rejoignez nous</h1>
+                             <h1 class="m-0">Contactez-nous</h1>
                         </div>
                         <div class="card-body rounded-bottom bg-primary p-5">
                             <form>
                                 <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" placeholder="Nom" required="required" />
+                                    <input type="text" class="form-control border-0 p-4" placeholder="Nom" required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control border-0 p-4" placeholder="Email" required="required" />
+                                    <input type="email" class="form-control border-0 p-4" placeholder="Email" required="required">
                                 </div>
-                                <div class="form-group">
-                                    <select class="custom-select border-0 px-4" style="height: 47px;">
-                                        <option selected>Selectionner une formation</option>
-                                        <option value="1">Course 1</option>
-                                        <option value="2">Course 1</option>
-                                        <option value="3">Course 1</option>
-                                    </select>
-                                </div>
+                                 <div class="form-group">
+                                <textarea class="form-control border-0 p-4" rows="4" placeholder="Votre message"></textarea>
+                            </div>
+                               
                                 <div>
-                                    <button class="btn btn-dark btn-block border-0 py-3" type="submit">S'inscire</button>
+                                    <button class="btn btn-dark btn-block border-0 py-3" type="submit">Envoyer</button>
                                 </div>
                             </form>
                         </div>
@@ -238,9 +275,10 @@ Sécurité Incendie</small>
             </div>
         </div>
     </div>
-    <!-- Registration End -->
 
+{{ include('Site/partner.html.twig') }}
     <!-- Testimonial Start -->
+
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mb-5">
@@ -274,45 +312,35 @@ Sécurité Incendie</small>
         </div>
     </div>
     <!-- Testimonial End -->
+{{ include('Site/actu.html.twig') }}
 
+{{ include('Site/certif.html.twig') }}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var formations = document.querySelectorAll('.formation-category');
 
-    <!-- Blog Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-5">
-                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Notre Blog</h5>
-                <h1> Les Dernières Actualités</h1>
-            </div>
-            <div class="row pb-3">
-                <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="img/blog-2.jpg" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita at ut clita</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->
+        formations.forEach(function(formation) {
+            formation.style.display = 'none';
+        });
+
+        var categoryLinks = document.querySelectorAll('.cat-overlay');
+
+        categoryLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var category = this.getAttribute('data-category');
+
+                formations.forEach(function(formation) {
+                    var formationCategory = formation.getAttribute('data-category');
+                    var displayStyle = formationCategory === category ? 'block' : 'none';
+                    formation.style.display = displayStyle;
+                });
+            });
+        });
+    });
+</script>
+
+  <script src="https://kit.fontawesome.com/db78e6416f.js" crossorigin="anonymous"></script>
+
+  
 {% endblock %}

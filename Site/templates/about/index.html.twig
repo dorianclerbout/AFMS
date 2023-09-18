@@ -1,51 +1,51 @@
-{% extends 'base.html.twig' %}
+{% extends 'Site/base.html.twig' %}
 
 {% block title %}{% endblock %}
 
 {% block body %}
     <!-- Header Start -->
-    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container-fluid page-header" style="margin-bottom: 40px;">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
-                <h3 class="display-4 text-white text-uppercase">A propos </h3>
-                <div class="d-inline-flex text-white">
-                    <p class="m-0 text-uppercase"><a class="text-white" href="">Accueil</a></p>
-                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                    <p class="m-0 text-uppercase">A propos</p>
-                </div>
+                <h3 class="display-4 text-white text-uppercase">Qui sommes nous ? </h3>
+               
             </div>
         </div>
     </div>
     <!-- Header End -->
-    <!-- About Section -->
-    <section class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="about-title">Qui sommes-nous ?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consequat mauris a lorem
-                        accumsan, nec tempus enim tristique. Mauris dignissim dictum massa, in feugiat tellus
-                        fringilla eget. Fusce hendrerit sem ut justo gravida hendrerit. Nullam finibus nunc
-                        eget facilisis lacinia. Vestibulum dapibus eros ut mauris aliquet, ut vestibulum ante
-                        vulputate. Phasellus vitae massa sit amet enim aliquam dictum. Suspendisse tristique
-                        elit nec mi tempor, at lacinia est tempus. Maecenas fermentum diam ut turpis tempor,
-                        in semper lacus malesuada. Aliquam et enim sed mauris varius varius a eget erat. Sed
-                        eu tellus et nunc pharetra pretium. Curabitur posuere magna ac cursus auctor. Etiam
-                        elementum aliquet fringilla. Suspendisse potenti.</p>
-                    <p>Nunc posuere metus at augue rhoncus rhoncus. Pellentesque habitant morbi tristique
-                        senectus et netus et malesuada fames ac turpis egestas. Phasellus congue laoreet ipsum,
-                        quis laoreet ex. Morbi pellentesque, neque vitae consequat rutrum, metus est auctor
-                        eros, eu malesuada quam leo vel orci. Sed nec ipsum at elit scelerisque laoreet.
-                        Praesent fringilla tellus id tortor volutpat, in lobortis ipsum volutpat. Sed id
-                        tincidunt ipsum, a malesuada dolor. In ac tincidunt purus, eget gravida sem. Proin
-                        maximus sem non fringilla gravida. Proin at facilisis enim, id condimentum ex. Ut
-                        vulputate orci eu eleifend suscipit.</p>
-                </div>
-                <div class="about-image">
-                    <img src="about-image.jpg" alt="About Image">
+<div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                  <div class="col-lg-7">
+                        <div class="text-left mb-4">
+                            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Bienvenue chez AFMS</h5>
+                             <h1>Agence de Formation aux Métiers de la Sécurité </h1>
+                         </div>
+                        
+                            <p>Face à un environnement professionnel en perpétuelle évolution, l'Agence de Formation aux Métiers de la Sécurité (AFMS) voit le jour. Nous avons identifié plusieurs défis auxquels sont confrontés les professionnels de la sécurité .</p>
+                            <p>Nos experts en formation ont collaboré étroitement avec les équipes pédagogiques et les conseillers en formation pour concevoir des programmes à la fois pertinents et adaptés. Nous avons échangé avec des dirigeants, des responsables RH, des recruteurs de divers secteurs pour cerner les besoins en main d’œuvre qualifiée.</p>
+                            <p>Nous avons également écouté les aspirations des chercheurs d'emploi, des étudiants et des professionnels en transition, et affiné notre catalogue en conséquence.</p>
+                            <p>L'AFMS s'engage à vous fournir des formations de qualité, adaptées aux réalités du terrain, pour vous préparer au mieux à votre avenir dans le domaine de la sécurité." </p>
+                    
+                            <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2"> Voir nos Formations</a>
+                    </div>
+              
+                <div class="col-lg-5">
+                 <img class="img-fluid rounded mb-4 mb-lg-0" src="assets/img/Placeholder.png" alt="">
+                    
                 </div>
             </div>
         </div>
-    </section>
- 
+    </div>
+
+
+
+
+{{ include('Site/certif.html.twig') }}
+
+
+
+
+
+
 {% endblock %}

@@ -1,0 +1,62 @@
+
+{% extends 'Admin/base.html.twig' %}
+
+{% block title %}Administration AFMS{% endblock %}
+
+{% block body %}
+  <div class="right_col" role="main">
+          <div class="">
+        
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Gestion des formations </small></h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <div class="row">
+
+                
+                      {% for formation in formations %}
+                      <div class="col-md-55">
+                          <div class="thumbnail">
+                              <div class="image view view-first">
+                                  
+                            <img style="width: 100%; display: block;" src="{{ asset('uploads/' ~ formation.imageFileName) }}" alt="{{ formation.name }}" />
+
+
+
+                                  <div class="mask">
+                                        <p>{{ formation.name }}</p>
+                                      <div class="tools tools-bottom">
+                                          <a href="#"><i class="fa fa-link"></i></a>
+                                          <a href="#"><i class="fa fa-pencil"></i></a>
+                                          <a href="#"><i class="fa fa-times"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                          
+                                
+                             
+                          </div>
+                      </div>
+                  {% endfor %}
+                
+ 
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+   
+{% endblock %}

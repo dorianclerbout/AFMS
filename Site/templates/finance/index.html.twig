@@ -1,0 +1,91 @@
+{% extends 'Site/base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <!-- Header Start -->
+    
+    <div class="container-fluid page-header-finance" style="margin-bottom: 30px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">Financement </h3>
+               
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="text-left mb-4">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing:5px;">Investir dans Votre Avenir</h5>
+                    </div>
+                    <h1 class="mb-5"> Financement de Votre Formation</h1>
+                    <p>Chez AFMS nous comprenons que trouver le financement adéquat pour votre formation peut parfois être une tâche complexe. C'est pourquoi nous sommes là pour vous accompagner à chaque étape du processus.</p>
+                    <p>Notre équipe dévouée de conseillers est à votre disposition pour vous guider dans l'exploration des différentes options de financement disponibles, que ce soit par le biais du CPF, du Fongecif ou d'autres sources. Nous travaillons en étroite collaboration avec vous pour comprendre vos besoins et vos objectifs, afin de vous proposer des solutions adaptées.</p>
+                    <p>Que ce soit pour vous aider à remplir les formulaires, clarifier les critères d'éligibilité ou vous orienter vers les ressources appropriées, nous sommes engagés à faire de votre recherche de financement une expérience fluide et fructueuse.</p>
+                    <p>Ne laissez pas les questions financières entraver votre progression vers vos objectifs éducatifs et professionnels. Faites confiance à AFMS pour vous accompagner dans cette démarche cruciale. Contactez-nous dès aujourd'hui pour bénéficier d'un soutien personnalisé et avancer sereinement vers la réalisation de votre projet.</p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="../assets/img/Placeholder.png" alt="website template image">
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+{{ include('Site/partner.html.twig') }}
+
+<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <div class="mb-4">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Besoin de Renseignements</h5>
+                        <h1 class="text-white">Contactez-nous</h1>
+                    </div>
+                    <p class="text-white">Si vous avez des questions concernant le financement de votre formation, n'hésitez pas à nous contacter.<p> 
+                    <p class="text-white"> Nous sommes là pour vous aider à trouver les meilleures solutions.</p>
+                    
+                    <ul class="list-inline text-white m-0">
+                        <li class="py-2"><i class="fa fa-phone text-primary mr-3"></i>Appelez-nous au : +123 456 789</li>
+                        <li class="py-2"><i class="fa fa-clock text-primary mr-3"></i>Horaires d'ouverture : Lun - Ven : 9h00 - 18h00</li>
+                      
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card border-0">
+                        <div class="card-header bg-light text-center p-4">
+                             <h1 class="m-0">Contactez-nous</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-primary p-5">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control border-0 p-4" placeholder="Nom" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control border-0 p-4" placeholder="Email" required="required">
+                                </div>
+                                 <div class="form-group">
+                                <textarea class="form-control border-0 p-4" rows="4" placeholder="Votre message"></textarea>
+                            </div>
+                               
+                                <div>
+                                    <button class="btn btn-dark btn-block border-0 py-3" type="submit">Envoyer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   {{ include('Site/certif.html.twig') }}
+
+   <script src="https://kit.fontawesome.com/db78e6416f.js" crossorigin="anonymous"></script>
+{% endblock %}
