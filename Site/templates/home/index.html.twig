@@ -187,29 +187,35 @@
                     <div class="carousel-item {% if loop.first %}active{% endif %}">
                         <div class="col-lg-4 col-md-6 mb-4 formation-category" data-category="{{ formation.categorie }}">
                             <div class="rounded overflow-hidden mb-2">
-                                <img class="img-fluid rounded" src="{{ asset('uploads/' ~ formation.imageFileName) }}" alt="{{ formation.name }}">
-                                <div class="bg-secondary p-4">
-                                    <div class="d-flex justify-content-between mb-3">
-                                        <small class="m-0">
-                                            {% if formation.categorie == 'Agent de surveillance' %}
-                                                <i class="fa-solid fa-shield-halved text-primary mr-2"></i>
-                                            {% elseif formation.categorie == 'SSIAP' %}
-                                                <i class="fa-solid fa-house-fire text-primary mr-2"></i>
-                                            {% elseif formation.categorie == 'Secourisme' %}
-                                                <i class="fa-solid fa-suitcase-medical text-primary mr-2"></i>
-                                            {% elseif formation.categorie == 'Habilitations électriques' %}
-                                                <i class="fa-solid fa-bolt text-primary mr-2"></i>
-                                            {% elseif formation.categorie == 'Incendie' %}
-                                                <i class="fa fa-incendie-icon-class-here text-primary mr-2" aria-hidden="true"></i>
-                                            {% endif %}
-                                            {{ formation.categorie }}
-                                        </small>
-                                        <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>{{ formation.time }} Heures</small>
-                                        <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>{{ formation.people }} Participants</small>
-                                        <small class="m-0"><i class="fa fa-euro text-primary mr-2"></i> € </small>
-                                    </div>
-                                    <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Obtenir un devis</a>
-                                </div>
+                                 <img class="img-fluid rounded" src="{{ asset('uploads/' ~ formation.imageFileName) }}" alt="{{ formation.name }}">
+                         <div class="bg-secondary p-4">
+             <a class="h5" href="">{{ formation.name }}</a>
+                <div class="d-flex justify-content-between mb-3">
+                    <small class="m-0">
+                        {% if formation.categorie == 'Agent de surveillance' %}
+                            <i class="fa-solid fa-shield-halved text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'SSIAP' %}
+                            <i class="fa-solid fa-house-fire text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'Secourismes' %}
+                            <i class="fa-solid fa-suitcase-medical text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'Habilitations électriques' %}
+                            <i class="fa-solid fa-bolt text-primary mr-2"></i>
+                        {% elseif formation.categorie == 'Incendie' %}
+                            <i class="fa fa-incendie-icon-class-here text-primary mr-2" aria-hidden="true"></i>
+                        {% endif %}
+                        {{ formation.categorie }}
+                    </small>
+                    <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>{{ formation.time }} Heures</small>
+                </div>
+                <div class="d-flex justify-content-between">
+                        <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>{{ formation.people }} Participants</small>
+                        <small class="m-0"><i class="fa fa-euro text-primary mr-2"></i> €</small>
+                    </div>
+               
+                <div class="border-top mt-4 pt-4">
+                    
+                    <center>  <a href="" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Obtenir un Devis</a></center>
+                </div>
                             </div>
                         </div>
                     </div>
